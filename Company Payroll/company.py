@@ -1,4 +1,4 @@
-from employee import Employee
+from employee import Employee, SalaryEmployee, HourlyEmployee, CommissionEmployee
 
 
 class Company:
@@ -6,7 +6,7 @@ class Company:
         self.employees = []
 
     def add_employee(self, new_employee) -> None:
-        if new_employee == None:
+        if new_employee is None:
             raise ValueError("The passed employee mustn't be None!")
         self.employees.append(new_employee)
 
@@ -27,11 +27,11 @@ class Company:
 def main() -> None:
     my_company = Company()
 
-    employee1 = Employee("Max", "Mustermann", 10000)
+    employee1 = SalaryEmployee("Max", "Mustermann", 10000)
     my_company.add_employee(employee1)
-    employee2 = Employee("Hermine", "Musterfrau", 20000)
+    employee2 = HourlyEmployee("Hermine", "Musterfrau", 25, 50)
     my_company.add_employee(employee2)
-    employee3 = Employee("Moritz", "Farbenfroh", 15000)
+    employee3 = CommissionEmployee("Moritz", "Farbenfroh", 30000, 5, 200)
     my_company.add_employee(employee3)
 
     my_company.print_employees()
